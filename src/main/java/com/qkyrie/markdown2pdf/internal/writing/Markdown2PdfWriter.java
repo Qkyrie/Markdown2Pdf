@@ -7,7 +7,6 @@ package com.qkyrie.markdown2pdf.internal.writing;
  *
  * @author Quinten De Swaef
  */
-@FunctionalInterface
 public interface Markdown2PdfWriter {
     void write(byte[] out);
 }

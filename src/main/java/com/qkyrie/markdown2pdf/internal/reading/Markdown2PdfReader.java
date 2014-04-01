@@ -7,7 +7,6 @@ package com.qkyrie.markdown2pdf.internal.reading;
  *
  * @author Quinten De Swaef
  */
-@FunctionalInterface
 public interface Markdown2PdfReader {
     public String read();
 }
