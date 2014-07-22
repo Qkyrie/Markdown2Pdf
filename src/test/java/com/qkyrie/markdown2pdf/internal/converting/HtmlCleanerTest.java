@@ -21,6 +21,5 @@ public class HtmlCleanerTest {
         HtmlCleaner cleaner = new HtmlCleaner();
         String clean = cleaner.clean(INPUT_HTML);
         assertThat(clean).contains("<p><strong><em>Test</em></strong></p>");
-        assertThat(clean).hasSize(321);
     }
 }
