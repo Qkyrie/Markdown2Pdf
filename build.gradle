@@ -1,6 +1,8 @@
 apply plugin: 'java'
 apply plugin: 'idea'
 
+group = "com.de-swaef"
+archivesBaseName = "Markdown2Pdf"
 sourceCompatibility = 1.8
 version = '1.1.0-SNAPSHOT'
 
@@ -24,4 +26,67 @@ task "forceTest" {
 
 task "fullBuild" {
     dependsOn "cleanTest", "test", "check", "build"
+}
+
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives javadocJar, sourcesJar
+}
+
+signing {
+    sign configurations.archives
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            pom.project {
+                name 'Markdown2Pdf'
+                packaging 'jar'
+                // optionally artifactId can be defined here
+                description 'A library for converting Markdown to Pdf files'
+                url 'https://github.com/Qkyrie/Markdown2Pdf'
+
+                scm {
+                    connection 'https://github.com/Qkyrie/Markdown2Pdf.git'
+                    developerConnection 'https://github.com/Qkyrie/Markdown2Pdf.git'
+                    url 'https://github.com/Qkyrie/Markdown2Pdf.git'
+                }
+
+                licenses {
+                    license {
+                        name 'GNU AFFERO GENERAL PUBLIC LICENSE'
+                        url 'http://www.gnu.org/licenses/agpl.txt'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id 'Qkyrie'
+                        name 'Quinten De Swaef'
+                        email 'quintendeswaef@gmail.com'
+                    }
+                }
+            }
+        }
+    }
 }
