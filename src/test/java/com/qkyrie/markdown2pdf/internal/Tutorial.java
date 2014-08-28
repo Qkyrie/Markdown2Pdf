@@ -35,22 +35,14 @@ public class Tutorial {
             With Java 8 in mind, we chose for a more generic approach, where we only have to
             implement a class defined by Markdown2PdfReader
          */
-        markdown2PdfConverter.readFrom(new Markdown2PdfReader() {
-            @Override
-            public String read() {
-                return "***Test***";
-            }
-        });
+        markdown2PdfConverter.readFrom(() -> "***Test***");
 
         /*
             Same thing goes for our writer. When the reading, cleaning and converting is done,
             we need to do something with the resulted bytes. What you do with it is entirely up to you.
          */
-        markdown2PdfConverter.writeTo(new Markdown2PdfWriter() {
-            @Override
-            public void write(byte[] out) {
-                //do something with it here
-            }
+        markdown2PdfConverter.writeTo(out -> {
+            //do something with it here
         });
 
         /*
@@ -71,18 +63,10 @@ public class Tutorial {
     public void basicExampleAsOneLiner() throws Markdown2PdfLogicException, ConversionException {
         Markdown2PdfConverter
                 .newConverter()
-                .readFrom(new Markdown2PdfReader() {
-                    @Override
-                    public String read() {
-                        return "***Test***";
-                    }
-                })
-                .writeTo(new Markdown2PdfWriter() {
-                    @Override
-                    public void write(byte[] out) {
-                        //here you can just do something with the bytes, like write it to a file
-                        //for example.
-                    }
+                .readFrom(() -> "***Test***")
+                .writeTo(out -> {
+                    //here you can just do something with the bytes, like write it to a file
+                    //for example.
                 })
                 .doIt();
     }
