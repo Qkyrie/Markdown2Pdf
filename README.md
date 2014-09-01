@@ -1,7 +1,7 @@
 Markdown2Pdf
 ============
 
-A simple library to convert markdown to pdf using Java
+A simple library to convert markdown to pdf, **using Java**
 
 
 ##Why
@@ -10,25 +10,39 @@ Sometimes, it might come in handy to create a pdf version of a markdown file. Th
 The codebase is kept fairly small, while still providing a fluent API. 
 
 ##Prerequisites
-This library only relies on the fact that you have at least Java JDK 1.7 installed. We support Java 1.8, and as of version 1.1 (which is still being worked on) we will make great use of the new features Java 8 has to offer.
+###Version 1.0.x
+This library only relies on the fact that you have at least Java JDK 1.6 installed. We support Java 1.8, and as of version 1.1 (which is still being worked on) we will make great use of the new features Java 8 has to offer.
+
+	<dependency>
+		<groupId>com.de-swaef</groupId>
+		<artifactId>Markdown2Pdf</artifactId>
+		<version>1.0.2</version>
+	</dependency>
+
+
+###Version 1.1.x and up
+This version of the library will only support Java 1.8.
+
+> Version 1.1.X has not yet been made available
 
 ##Building 
     > git clone https://github.com/Qkyrie/Markdown2Pdf.git
+	> gradle wrapper
 	> gradlew.bat
 
 ##API examples
 Instead of just providing you with examples here, we created an entire Class dedicated on teaching you the basics of the API. The class can be found in the repository, but for the current version, basically, this is it:
 
-    /**
- 	  * Welcome to the tutorial for Markdown2Pdf.
- 	  * We tried to create a page to demonstrate how to use our API. But in the end, we found that
- 	  * it was a lot easier to see how to use it when effectively using our code in a working example.
- 	  * <p/>
- 	  * If you look at the examples listed below, you should get the hang of how you'll be able to use
- 	  * and integrate this library in one of your own projects
- 	  */
+	/**
+	 * Welcome to the tutorial for Markdown2Pdf.
+	 * We tried to create a page to demonstrate how to use our API. But in the end, we found that
+	 * it was a lot easier to see how to use it when effectively using our code in a working example.
+	 * <p/>
+	 * If you look at the examples listed below, you should get the hang of how you'll be able to use
+	 * and integrate this library in one of your own projects
+	 */
 	public class Tutorial {
-
+	
 	    @Test
 	    public void basicExample() throws Markdown2PdfLogicException, ConversionException {
 	
@@ -43,22 +57,14 @@ Instead of just providing you with examples here, we created an entire Class ded
 	            With Java 8 in mind, we chose for a more generic approach, where we only have to
 	            implement a class defined by Markdown2PdfReader
 	         */
-	        markdown2PdfConverter.readFrom(new Markdown2PdfReader() {
-	            @Override
-	            public String read() {
-	                return "***Test***";
-	            }
-	        });
+	        markdown2PdfConverter.readFrom(() -> "***Test***");
 	
 	        /*
 	            Same thing goes for our writer. When the reading, cleaning and converting is done,
 	            we need to do something with the resulted bytes. What you do with it is entirely up to you.
 	         */
-	        markdown2PdfConverter.writeTo(new Markdown2PdfWriter() {
-	            @Override
-	            public void write(byte[] out) {
-	                //do something with it here
-	            }
+	        markdown2PdfConverter.writeTo(out -> {
+	            //do something with it here
 	        });
 	
 	        /*
@@ -79,18 +85,10 @@ Instead of just providing you with examples here, we created an entire Class ded
 	    public void basicExampleAsOneLiner() throws Markdown2PdfLogicException, ConversionException {
 	        Markdown2PdfConverter
 	                .newConverter()
-	                .readFrom(new Markdown2PdfReader() {
-	                    @Override
-	                    public String read() {
-	                        return "***Test***";
-	                    }
-	                })
-	                .writeTo(new Markdown2PdfWriter() {
-	                    @Override
-	                    public void write(byte[] out) {
-	                        //here you can just do something with the bytes, like write it to a file
-	                        //for example.
-	                    }
+	                .readFrom(() -> "***Test***")
+	                .writeTo(out -> {
+	                    //here you can just do something with the bytes, like write it to a file
+	                    //for example.
 	                })
 	                .doIt();
 	    }
