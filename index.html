@@ -46,7 +46,8 @@
 <h2>
 <a name="why" class="anchor" href="#why"><span class="octicon octicon-link"></span></a>Why</h2>
 
-<p>Sometimes, it might come in handy to create a pdf version of a markdown file. This library combines several other libraries to leverage the hassle of converting everything by yourself.</p>
+<p>Sometimes, it might come in handy to create a pdf version of a markdown file. 
+This library combines several other libraries to leverage the hassle of converting everything by yourself.</p>
 
 <p>The codebase is kept fairly small, while still providing a fluent API. </p>
 
@@ -122,8 +123,10 @@ public class Tutorial {
         });
 
         /*
-            What has the API done at this point? The simple answer: nothing. It only set the states and placeholders
-            for what it will be doing. It's lazily executed, which means that you'll have to explicitly make it do the
+            What has the API done at this point? The simple answer: nothing. 
+                It only set the states and placeholders
+            for what it will be doing. It's lazily executed, which means that you'll 
+                have to explicitly make it do the
             work in order for it to read, clean and convert.
 
             Actually making the API do the work can be done as follows:
@@ -148,8 +151,10 @@ public class Tutorial {
     }
 
     /**
-     * It might seem tedious, implementing two interfaces in order to make the execution work, but believe us when
-     * we say that it's for the best. With Java 8 in mind, these interfaces will be functional interfaces, and will be
+     * It might seem tedious, implementing two interfaces in order to make the execution work, 
+         * but believe us when
+     * we say that it's for the best. With Java 8 in mind, these interfaces will be functional interfaces, 
+         * and will be
      * replaceable with Lambda expressions.
      *
      * Fortunately, we provided some Simple implementations which can serve as replacement
