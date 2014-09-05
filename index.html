@@ -1,75 +1,209 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
     <title>Markdown2pdf by Qkyrie</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
   </head>
-
   <body>
-    <div id="container">
-      <div class="inner">
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/Qkyrie/Markdown2Pdf">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/Qkyrie/Markdown2Pdf/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/Qkyrie/Markdown2Pdf/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
 
-        <header>
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
           <h1>Markdown2pdf</h1>
-          <h2>A simple library to convert markdown to pdf using Java</h2>
-        </header>
+          <p>A simple library to convert markdown to pdf using Java</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/Qkyrie">Qkyrie</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
 
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/Qkyrie/Markdown2Pdf/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/Qkyrie/Markdown2Pdf/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/Qkyrie/Markdown2Pdf" id="view-on-github" class="button"><span>View on GitHub</span></a>
-        </section>
+        <h1>
+<a name="markdown2pdf" class="anchor" href="#markdown2pdf"><span class="octicon octicon-link"></span></a>Markdown2Pdf</h1>
 
-        <hr>
+<p>A simple library to convert markdown to pdf, <strong>using Java</strong></p>
 
-        <section id="main_content">
-          <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+<h2>
+<a name="why" class="anchor" href="#why"><span class="octicon octicon-link"></span></a>Why</h2>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p>Sometimes, it might come in handy to create a pdf version of a markdown file. This library combines several other libraries to leverage the hassle of converting everything by yourself.</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+<p>The codebase is kept fairly small, while still providing a fluent API. </p>
+
+<h2>
+<a name="prerequisites" class="anchor" href="#prerequisites"><span class="octicon octicon-link"></span></a>Prerequisites</h2>
+
+<h3>
+<a name="version-10x" class="anchor" href="#version-10x"><span class="octicon octicon-link"></span></a>Version 1.0.x</h3>
+
+<p>This library only relies on the fact that you have at least Java JDK 1.6 installed. We support Java 1.8, and as of version 1.1 (which is still being worked on) we will make great use of the new features Java 8 has to offer.</p>
+
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;com.de-swaef&lt;/groupId&gt;
+    &lt;artifactId&gt;Markdown2Pdf&lt;/artifactId&gt;
+    &lt;version&gt;1.0.2&lt;/version&gt;
+&lt;/dependency&gt;
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
 <h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<a name="version-11x-and-up" class="anchor" href="#version-11x-and-up"><span class="octicon octicon-link"></span></a>Version 1.1.x and up</h3>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p>This version of the library will only support Java 1.8.</p>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<blockquote>
+<p>Version 1.1.X has not yet been made available</p>
+</blockquote>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<h2>
+<a name="building" class="anchor" href="#building"><span class="octicon octicon-link"></span></a>Building</h2>
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<pre><code>&gt; git clone https://github.com/Qkyrie/Markdown2Pdf.git
+&gt; gradle wrapper
+&gt; gradlew.bat
+</code></pre>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<h2>
+<a name="api-examples" class="anchor" href="#api-examples"><span class="octicon octicon-link"></span></a>API examples</h2>
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+<p>Instead of just providing you with examples here, we created an entire Class dedicated on teaching you the basics of the API. The class can be found in the repository, but for the current version, basically, this is it:</p>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-        </section>
+<pre><code>/**
+ * Welcome to the tutorial for Markdown2Pdf.
+ * We tried to create a page to demonstrate how to use our API. But in the end, we found that
+ * it was a lot easier to see how to use it when effectively using our code in a working example.
+ * &lt;p/&gt;
+ * If you look at the examples listed below, you should get the hang of how you'll be able to use
+ * and integrate this library in one of your own projects
+ */
+public class Tutorial {
 
-        <footer>
-          Markdown2pdf is maintained by <a href="https://github.com/Qkyrie">Qkyrie</a><br>
-          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
-        </footer>
+    @Test
+    public void basicExample() throws Markdown2PdfLogicException, ConversionException {
 
-                  <script type="text/javascript">
+        /*
+            Let's create an instance of the markdown2PdfConverter to work with
+         */
+        Markdown2PdfConverter markdown2PdfConverter =
+                Markdown2PdfConverter.newConverter();
+
+        /*
+            We'll have to specify where our converter has to get his markdown data.
+            With Java 8 in mind, we chose for a more generic approach, where we only have to
+            implement a class defined by Markdown2PdfReader
+         */
+        markdown2PdfConverter.readFrom(() -&gt; "***Test***");
+
+        /*
+            Same thing goes for our writer. When the reading, cleaning and converting is done,
+            we need to do something with the resulted bytes. What you do with it is entirely up to you.
+         */
+        markdown2PdfConverter.writeTo(out -&gt; {
+            //do something with it here
+        });
+
+        /*
+            What has the API done at this point? The simple answer: nothing. It only set the states and placeholders
+            for what it will be doing. It's lazily executed, which means that you'll have to explicitly make it do the
+            work in order for it to read, clean and convert.
+
+            Actually making the API do the work can be done as follows:
+         */
+        markdown2PdfConverter.doIt();
+    }
+
+    /**
+     * Our API has been implemented in such a way, that you can use it as a oneliner.
+     * The above example can be rewritten, as shown in the this example
+     */
+    @Test
+    public void basicExampleAsOneLiner() throws Markdown2PdfLogicException, ConversionException {
+        Markdown2PdfConverter
+                .newConverter()
+                .readFrom(() -&gt; "***Test***")
+                .writeTo(out -&gt; {
+                    //here you can just do something with the bytes, like write it to a file
+                    //for example.
+                })
+                .doIt();
+    }
+
+    /**
+     * It might seem tedious, implementing two interfaces in order to make the execution work, but believe us when
+     * we say that it's for the best. With Java 8 in mind, these interfaces will be functional interfaces, and will be
+     * replaceable with Lambda expressions.
+     *
+     * Fortunately, we provided some Simple implementations which can serve as replacement
+     * for your own implementation of the interfaces. Just follow the
+     */
+    @Test
+    public void additionalUtilityClasses() {
+       utilityReaders();
+       utilityWriters();
+    }
+
+    /**
+     * UtilityReaders are simple implementations of the
+     * Markdown2PdfReader interface
+     */
+    private void utilityReaders() {
+        simpleStringMarkdown2PdfReader();
+    }
+
+    /**
+     * UtilityWriters on the other hand are simple implementation
+     * of the Markdown2PdfWriter interface
+     */
+    private void utilityWriters() {
+        simpleFileMarkdown2PdfWriter();
+    }
+
+    /**
+     * the SimpleStringMarkdown2PdfReader can be used to read from a String. It's the most simple
+     * of implementations, which you'll probably find using a lot.
+     */
+    private void simpleStringMarkdown2PdfReader() {
+        Markdown2PdfConverter
+                .newConverter()
+                .readFrom(new SimpleStringMarkdown2PdfReader("***Test***"));
+    }
+
+    /**
+     * The SimpleFileMarkdown2PdfWriter implements the Markdown2PdfWriter in such a way, that the only
+     * thing you need to provide is a file. It will write the resulted bytes to the file.
+     */
+    private void simpleFileMarkdown2PdfWriter() {
+        Markdown2PdfConverter
+                .newConverter()
+                .writeTo(new SimpleFileMarkdown2PdfWriter(new File("pathname_comes_here")));
+    }
+
+}
+</code></pre>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+              <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
@@ -80,7 +214,5 @@ $ git checkout gh-pages
             } catch(err) {}
           </script>
 
-      </div>
-    </div>
   </body>
 </html>
