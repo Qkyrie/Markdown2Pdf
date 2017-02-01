@@ -1,5 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'idea'
+apply plugin: 'maven'
+apply plugin: 'signing'
 
 group = "com.de-swaef"
 archivesBaseName = "Markdown2Pdf"
@@ -26,6 +28,10 @@ task "forceTest" {
 
 task "fullBuild" {
     dependsOn "cleanTest", "test", "check", "build"
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.11'
 }
 
 task javadocJar(type: Jar) {
