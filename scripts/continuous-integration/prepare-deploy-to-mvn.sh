@@ -4,7 +4,7 @@
 #    gpg --fast-import scripts/continuous-integration/signingkey.asc
 #fi
 
-if [ "$TRAVIS_PULL_REQUEST" == 'false' ]; then
+if [ "$TRAVIS_BRANCH" = 'master' ] && [ "$TRAVIS_PULL_REQUEST" == 'false' ]; then
     echo "decrypting certificate"
     openssl aes-256-cbc -K $encrypted_a3badead09c1_key -iv $encrypted_a3badead09c1_iv -in codesigning.asc.enc -out codesigning.asc -d
     gpg --batch --import scripts/continuous-integration/codesigning.asc
