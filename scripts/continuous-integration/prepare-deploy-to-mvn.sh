@@ -6,6 +6,6 @@
 
 if [ "$TRAVIS_PULL_REQUEST" == 'false' ]; then
     echo "decrypting certificate"
-    openssl aes-256-cbc -K $encrypted_64f39d4087b6_key -iv $encrypted_64f39d4087b6_iv -in scripts/continuous-integration/codesigning.asc.enc -out scripts/continuous-integration/codesigning.asc -d
+    openssl aes-256-cbc -K $encrypted_a3badead09c1_key -iv $encrypted_a3badead09c1_iv -in codesigning.asc.enc -out codesigning.asc -d
     gpg --batch --import scripts/continuous-integration/codesigning.asc
 fi
