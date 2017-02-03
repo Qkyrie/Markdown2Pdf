@@ -14,21 +14,18 @@ The codebase is kept fairly small, while still providing a fluent API.
 This library only relies on the fact that you have at least Java JDK 1.6 installed. We support Java 1.8, and as of version 1.1 (which is still being worked on) we will make great use of the new features Java 8 has to offer.
 
 	<dependency>
-		<groupId>com.de-swaef</groupId>
+		<groupId>eu.de-swaef.pdf</groupId>
 		<artifactId>Markdown2Pdf</artifactId>
-		<version>1.0.2</version>
+		<version>2.0.0-SNAPSHOT</version>
 	</dependency>
 
 
 ###Version 1.1.x and up
 This version of the library will only support Java 1.8.
 
-> Version 1.1.X has not yet been made available
-
 ##Building 
     > git clone https://github.com/Qkyrie/Markdown2Pdf.git
-	> gradle wrapper
-	> gradlew.bat
+    > mvn clean install
 
 ##API examples
 Instead of just providing you with examples here, we created an entire Class dedicated on teaching you the basics of the API. The class can be found in the repository, but for the current version, basically, this is it:

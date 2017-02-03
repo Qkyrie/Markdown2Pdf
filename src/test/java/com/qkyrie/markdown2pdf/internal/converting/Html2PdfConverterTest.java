@@ -21,7 +21,7 @@ public class Html2PdfConverterTest {
         Html2PdfConverter converter = new Html2PdfConverter();
         byte[] convert = converter.convert("<p>testing</p>");
         assertNotNull(convert);
-        assertThat(convert).hasSize(992);
+        assertThat(convert).hasSize(978);
     }
 
 }

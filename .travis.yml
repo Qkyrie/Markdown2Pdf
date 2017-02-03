@@ -1,0 +1,13 @@
+language: java
+jdk:
+- oraclejdk8
+cache:
+  directories:
+  - ".autoconf"
+  - "$HOME/.m2"
+install: mvn install -P !build-extras -DskipTests=true -Dmaven.javadoc.skip=true -B
+  -V
+script: mvn test -P !build-extras -B
+after_success:
+- "./scripts/continuous-integration/prepare-deploy-to-mvn.sh"
+- "./scripts/continuous-integration/deploy-to-mvn.sh"
