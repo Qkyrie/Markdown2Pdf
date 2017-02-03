@@ -8,3 +8,6 @@
 .idea/
 *.iml
 build/
+
+scripts/continuous-integration/codesigning.asc
+target/
