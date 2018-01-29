@@ -1,9 +1,13 @@
 package com.qkyrie.markdown2pdf.internal.converting;
 
-import com.qkyrie.markdown2pdf.internal.exceptions.ConversionException;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+
 import org.w3c.tidy.Tidy;
 
-import java.io.*;
+import com.qkyrie.markdown2pdf.internal.exceptions.ConversionException;
 
 /**
  * User: Quinten
@@ -22,6 +26,7 @@ public class HtmlCleaner {
         }
         ByteArrayOutputStream outputAsStream = new ByteArrayOutputStream();
         Tidy htmlCleaner = new Tidy();
+        htmlCleaner.setCharEncoding(org.w3c.tidy.Configuration.UTF8);
         htmlCleaner.setXHTML(true);
         htmlCleaner.parse(stringAsStream, outputAsStream);
 
