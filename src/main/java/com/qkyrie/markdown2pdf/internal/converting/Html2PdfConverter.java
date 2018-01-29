@@ -18,7 +18,7 @@ public class Html2PdfConverter implements Converter<String, byte[]> {
     public byte[] convert(String input) throws ConversionException {
         try {
             ITextRenderer renderer = new ITextRenderer();
-            renderer.setDocumentFromString(new String(input.getBytes()));
+            renderer.setDocumentFromString(input);
             renderer.layout();
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             renderer.createPDF(outputStream);
