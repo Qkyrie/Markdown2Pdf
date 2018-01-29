@@ -21,6 +21,8 @@ public class Markdown2PdfConverter {
     private Markdown2HtmlConverter markdown2htmlConverter;
     private HtmlCleaner htmlCleaner;
     private Html2PdfConverter html2PdfConverter;
+    private String inputEncoding;
+    private String outputEncoding;
 
 
     private Markdown2PdfConverter() {
@@ -47,7 +49,18 @@ public class Markdown2PdfConverter {
         validateLogicBeforeExecution();
         String originalMarkdownFile = reader.read();
         String htmlFile = markdown2htmlConverter.convert(originalMarkdownFile);
-        String cleanedHtmlFile = htmlCleaner.clean(htmlFile);
+        
+        String cleanedHtmlFile;
+        if(inputEncoding != null && outputEncoding != null) {
+        	cleanedHtmlFile = htmlCleaner.clean(htmlFile, inputEncoding, outputEncoding);        	
+        } else if(inputEncoding != null) {
+        	cleanedHtmlFile = htmlCleaner.cleanWithInputEncoding(htmlFile, inputEncoding);
+        } else if(outputEncoding != null) {
+        	cleanedHtmlFile = htmlCleaner.cleanWithOutputEncoding(htmlFile, outputEncoding);
+        } else {
+        	cleanedHtmlFile = htmlCleaner.clean(htmlFile);
+        }
+        
         byte[] convertedPdfFile = html2PdfConverter.convert(cleanedHtmlFile);
         writer.write(convertedPdfFile);
     }
@@ -60,5 +73,14 @@ public class Markdown2PdfConverter {
             throw Markdown2PdfLogicException.LOGIC_SETUP_WRITER;
         }
     }
-
+    
+    public Markdown2PdfConverter whithInputEncoding(String inputEncoding) {
+    	this.inputEncoding = inputEncoding;
+        return this;
+    }
+    
+    public Markdown2PdfConverter whithOutputEncoding(String outputEncoding) {
+    	this.outputEncoding = outputEncoding;
+        return this;
+    }
 }
