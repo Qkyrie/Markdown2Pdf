@@ -13,12 +13,13 @@ The codebase is kept fairly small, while still providing a fluent API.
 ###Version 1.0.x
 This library only relies on the fact that you have at least Java JDK 1.6 installed. We support Java 1.8, and as of version 1.1 (which is still being worked on) we will make great use of the new features Java 8 has to offer.
 
+```xml
 	<dependency>
 		<groupId>eu.de-swaef.pdf</groupId>
 		<artifactId>Markdown2Pdf</artifactId>
 		<version>2.0.1</version>
 	</dependency>
-
+```
 
 ###Version 1.1.x and up
 This version of the library will only support Java 1.8.
@@ -30,6 +31,7 @@ This version of the library will only support Java 1.8.
 ##API examples
 Instead of just providing you with examples here, we created an entire Class dedicated on teaching you the basics of the API. The class can be found in the repository, but for the current version, basically, this is it:
 
+```java
 	/**
 	 * Welcome to the tutorial for Markdown2Pdf.
 	 * We tried to create a page to demonstrate how to use our API. But in the end, we found that
@@ -142,5 +144,5 @@ Instead of just providing you with examples here, we created an entire Class ded
 	
 	}
 
-
+```
 
